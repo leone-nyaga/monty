@@ -1,44 +1,31 @@
 #include "monty.h"
 
-void push_opcode(stack_t **stack, unsigned int line_number)
+/**
+ * custom_push - Pushes an element to the stack.
+ * @stack: Pointer to the stack.
+ * @line_number: Line number for error reporting.
+ */
+void custom_push(stack_t **stack, unsigned int line_number)
 {
-    int num, i = 0, invalid = 0;
+    int val;
+    stack_t *new_node = malloc(sizeof(stack_t));
 
-    if (bus.arg)
-    {
-        if (bus.arg[0] == '-')
-            i++;
-        
-        while (bus.arg[i] != '\0')
-        {
-            if (bus.arg[i] < '0' || bus.arg[i] > '9')
-                invalid = 1;
-            i++;
-        }
-        
-        if (invalid)
-        {
-            fprintf(stderr, "L%d: usage: push integer\n", line_number);
-            fclose(bus.file);
-            free(bus.content);
-            free_stack(*stack);
-            exit(EXIT_FAILURE);
-        }
-    }
-    else
+    if (scanf("%d", &val) != 1)
     {
         fprintf(stderr, "L%d: usage: push integer\n", line_number);
-        fclose(bus.file);
-        free(bus.content);
-        free_stack(*stack);
         exit(EXIT_FAILURE);
     }
 
-    num = atoi(bus.arg);
-    
-    if (bus.lifi == 0)
-        addnode(stack, num);
-    else
-        addqueue(stack, num);
+    if (new_node == NULL)
+    {
+        fprintf(stderr, "Error: memory allocation failed\n");
+        exit(EXIT_FAILURE);
+    }
+
+    new_node->n = val;
+    new_node->prev = NULL;
+    new_node->next = *stack;
+
+    *stack = new_node;
 }
 
