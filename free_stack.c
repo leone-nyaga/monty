@@ -1,15 +1,18 @@
 #include "monty.h"
 
 /**
- * custom_pall - Prints all values on the stack.
+ * free_stack - Frees the entire stack.
  * @stack: A pointer to the stack.
  */
-void custom_pall(stack_t *stack)
+void free_stack(stack_t *stack)
 {
+    stack_t *temp;
+
     while (stack != NULL)
     {
-        printf("%d\n", stack->n);
+        temp = stack;
         stack = stack->next;
+        free(temp);
     }
 }
 

@@ -2,9 +2,10 @@
 #define MONTY_H
 
 #include <stdio.h>
-#include <stddef.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
+#define MAX_LINE_SIZE 1024
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -13,36 +14,36 @@
  * @next: points to the next element of the stack (or queue)
  *
  * Description: doubly linked list node structure
- * for stack, queues, LIFO, FIFO
+ * for stack, queues, LIFO, FIFO Holberton project
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+    int n;
+    struct stack_s *prev;
+    struct stack_s *next;
 } stack_t;
 
-
 /**
- * struct instruction_s - opcode and its function
- * @opcode: the opcode
- * @f: function to handle the opcode
- *
- * Description: opcode and its function
- * for stack, ques, LIFO, FIFO
+ * struct bus_s - Global variables
+ * @file: file pointer
+ * @content: content of current line
+ * @arg: argument for push opcode
+ * @lifo: flag for stack or queue mode
  */
-typedef struct instruction_s
+typedef struct bus_s
 {
-	char *opcode;
-	void (*f)(stack_t **stack, unsigned int line_number);
-} instruction_t;
+    FILE *file;
+    char *content;
+    char *arg;
+    int lifo;
+} bus_t;
 
+extern bus_t bus;
+
+/* Function prototypes */
 void custom_push(stack_t **stack, unsigned int line_num);
 void custom_pall(stack_t *stack);
-void custom_pint(stack_t *stack, unsigned int line_num);
-void custom_pop(stack_t **stack, unsigned int line_num);
-void custom_swap(stack_t **stack, unsigned int line_num);
-void custom_add(stack_t **stack, unsigned int line_num);
-void custom_nop(void);
+void free_stack(stack_t *stack);
 
-#endif
+#endif /* MONTY_H */
+
