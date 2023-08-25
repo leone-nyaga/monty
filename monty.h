@@ -44,6 +44,7 @@ extern bus_t bus;
 void custom_push(stack_t **stack, unsigned int line_num);
 void custom_pall(stack_t *stack);
 void free_stack(stack_t *stack);
+void pop_opcode(stack_t **stack, unsigned int line_number);
 
 #endif /* MONTY_H */
 
