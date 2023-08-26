@@ -1,13 +1,14 @@
 #include "monty.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 /**
- * swap_opcode - Swaps the top two elements of the stack.
- * @stack: Pointer to the stack.
- * @line_number: Line number of the current operation.
+ * swap_opcode - Swaps the top two elements of the stack
+ * @stack: Pointer to the stack
+ * @line_number: Line number in the Monty file
  */
 void swap_opcode(stack_t **stack, unsigned int line_number)
 {
-    stack_t *top = *stack, *next = NULL;
     int temp;
 
     if (stack_length(*stack) < 2)
@@ -19,9 +20,8 @@ void swap_opcode(stack_t **stack, unsigned int line_number)
         exit(EXIT_FAILURE);
     }
 
-    next = (*stack)->next;
-    temp = top->n;
-    top->n = next->n;
-    next->n = temp;
+    temp = (*stack)->n;
+    (*stack)->n = (*stack)->next->n;
+    (*stack)->next->n = temp;
 }
 

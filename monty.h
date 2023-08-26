@@ -41,15 +41,14 @@ typedef struct bus_s
 extern bus_t bus;
 
 /* Function prototypes */
+int main(int argc, char *argv[]);
 void custom_push(stack_t **stack, unsigned int line_num);
 void custom_pall(stack_t *stack);
+void pint_opcode(stack_t **stack, unsigned int line_num);
+void pop_opcode(stack_t **stack, unsigned int line_num);
 void free_stack(stack_t *stack);
-void pop_opcode(stack_t **stack, unsigned int line_number);
-void swap_opcode(stack_t **stack, unsigned int line_number);
-void add_opcode(stack_t **stack, unsigned int line_number);
-void pop(stack_t **stack, unsigned int line_number);
 void swap_opcode(stack_t **stack, unsigned int line_number);
 size_t stack_length(const stack_t *stack);
+void add_opcode(stack_t **stack, unsigned int line_number);
 
 #endif /* MONTY_H */
-

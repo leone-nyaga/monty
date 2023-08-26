@@ -1,4 +1,5 @@
 #include "monty.h"
+#include <stdio.h>
 #include <string.h>
 
 bus_t bus = {NULL, NULL, NULL, 0};
@@ -36,6 +37,48 @@ int main(int argc, char *argv[])
         {
             custom_pall(stack);
         }
+    }
+    while (fgets(line_content, sizeof(line_content), monty_file))
+    {
+    line_number++;
+    bus.content = line_content;
+
+    if (strncmp(line_content, "push", 4) == 0)
+    {
+        bus.arg = line_content + 4;
+        custom_push(&stack, line_number);
+    }
+    else if (strncmp(line_content, "pall", 4) == 0)
+    {
+        custom_pall(stack);
+    }
+    else if (strncmp(line_content, "pint", 4) == 0)
+    {
+        pint_opcode(&stack, line_number);
+    }
+    }
+    while (fgets(line_content, sizeof(line_content), monty_file))
+    {
+    line_number++;
+    bus.content = line_content;
+
+    if (strncmp(line_content, "push", 4) == 0)
+    {
+        bus.arg = line_content + 4;
+        custom_push(&stack, line_number);
+    }
+    else if (strncmp(line_content, "pall", 4) == 0)
+    {
+        custom_pall(stack);
+    }
+    else if (strncmp(line_content, "pint", 4) == 0)
+    {
+        pint_opcode(&stack, line_number);
+    }
+    else if (strncmp(line_content, "pop", 3) == 0)
+    {
+        pop_opcode(&stack, line_number);
+    }
     }
 
     free_stack(stack);

@@ -1,4 +1,5 @@
 #include "monty.h"
+#include <stdlib.h>
 
 /**
  * custom_push - pushes an element to the stack
@@ -12,7 +13,7 @@ void custom_push(stack_t **stack, unsigned int line_num)
 
     if (scanf("%d", &value) != 1)
     {
-        fprintf(stderr, "L%d: usage: push integer\n", line_num);
+        fprintf(stderr, "Line %d: usage: push integer\n", line_num);
         exit(EXIT_FAILURE);
     }
 
@@ -27,18 +28,5 @@ void custom_push(stack_t **stack, unsigned int line_num)
     new_node->next = *stack;
 
     *stack = new_node;
-}
-
-/**
- * custom_pall - function that prints all values on the stack
- * @stack: parameter
- */
-void custom_pall(stack_t *stack)
-{
-    while (stack != NULL)
-    {
-        printf("%d\n", stack->n);
-        stack = stack->next;
-    }
 }
 
