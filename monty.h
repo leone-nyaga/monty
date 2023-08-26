@@ -46,7 +46,10 @@ void custom_pall(stack_t *stack);
 void free_stack(stack_t *stack);
 void pop_opcode(stack_t **stack, unsigned int line_number);
 void swap_opcode(stack_t **stack, unsigned int line_number);
-size_t stack_length(stack_t *stack);
+void add_opcode(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
+void swap_opcode(stack_t **stack, unsigned int line_number);
+size_t stack_length(const stack_t *stack);
 
 #endif /* MONTY_H */
 
