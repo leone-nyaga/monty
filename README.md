@@ -1,6 +1,6 @@
 # 0x19. C - Stacks, Queues - LIFO, FIFO
 
-![make tea not love]()
+![make tea not love](https://github.com/leone-nyaga/monty/blob/master/images/make%20tea%20not%20love.png)
 
 ## Resources
 
@@ -169,7 +169,7 @@ julien@ubuntu:~/monty$
 
 ## Quiz Questions
 
-![task0]()
-![task1]()
+![task0](https://github.com/leone-nyaga/monty/blob/master/images/fifo0-1.png)
+![task1](https://github.com/leone-nyaga/monty/blob/master/images/fifo2-3.png)
 
-
+## Tasks
